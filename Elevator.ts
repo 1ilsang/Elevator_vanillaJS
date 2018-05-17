@@ -30,3 +30,7 @@ class Elevator {
 export function createElevator(id: string) {
     return new Elevator(id);
 }
+// export function moving(layerButton: HTMLElement) {
+//     public distLayer:number = layerButton.id.toString().replace(/[^0-9]/g, '');
+//     distLayer=3;
+// }

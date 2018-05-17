@@ -50,4 +50,8 @@ function createElevator(id) {
     return new Elevator(id);
 }
 exports.createElevator = createElevator;
+// export function moving(layerButton: HTMLElement) {
+//     public distLayer:number = layerButton.id.toString().replace(/[^0-9]/g, '');
+//     distLayer=3;
+// }
 //# sourceMappingURL=Elevator.js.map
