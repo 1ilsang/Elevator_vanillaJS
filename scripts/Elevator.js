@@ -5,6 +5,7 @@ var Elevator = /** @class */ (function () {
         this.id = id;
         this.currentLayer = 1;
         this.currentHeight = 0;
+        this.lock = false;
     }
     Object.defineProperty(Elevator.prototype, "curLayer", {
         get: function () {
@@ -33,9 +34,16 @@ var Elevator = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    Elevator.prototype.test = function () {
-        console.log('hi');
-    };
+    Object.defineProperty(Elevator.prototype, "isLock", {
+        get: function () {
+            return this.lock;
+        },
+        set: function (lock) {
+            this.lock = lock;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Elevator;
 }());
 function createElevator(id) {
