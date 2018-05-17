@@ -11,10 +11,10 @@
     margin-bottom: 5%;
 }
 
-#elevator-table > tbody > tr > th {
-    width: 1%;
-    text-align: right;
-}
+/*#elevator-table > tbody > tr > th {*/
+    /*width: 1%;*/
+    /*text-align: right;*/
+/*}*/
 
 #elevator-table > tbody > tr > td:nth-child(n) {
     font-size: 40px;

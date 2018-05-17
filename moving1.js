@@ -2,14 +2,12 @@ let clearTime = 0;
 var clear = 0;
 
 function goToDistLayer(layer) {
-    let e = document.getElementById('firstElevator');
+    let e = document.getElementById('Elevator1');
     let layerButton = document.getElementById(layer);
     moving(e, layerButton);
 }
 
 let lock = true;
-let elevatorNum = 5;
-let layerHeight = 4;
 const MAX_ELEVATOR_NUM = 4;
 const MIN_ELEVATOR_NUM = 2;
 const MAX_LAYER_HEIGHT = 5;
@@ -23,7 +21,6 @@ function moving(e, layerButton) {
     //TODO: 락 어떻게 처리할지 생각. disable 이 락이되는거 아닌가?
     if (!lock) return;
     else if (lock) {
-        console.log('come');
         e.style.backgroundColor = 'red';
         layerButton.style.backgroundColor = 'red';
         layerButton.disabled = 'disable';
@@ -45,7 +42,6 @@ function moving(e, layerButton) {
                 //e 의 현재 위치에서 빼주는 로직 추가 필요.
                 e.style.marginTop = -clearTime + 'px';
                 clearTime += 5;
-                console.log(clearTime);
             }
         }, 100);
     }
@@ -55,15 +51,42 @@ function setTableSize() {
     let tempC, tempR;
     tempC = document.getElementById('inputElevatorNum').value;
     tempR = document.getElementById('inputLayerHeight').value;
-    console.log(tempC, tempR);
     //TODO: validation 해줘야함.
     if ((tempC >= MIN_ELEVATOR_NUM && tempC <= MAX_ELEVATOR_NUM)
         && (tempR >= MIN_LAYER_HEIGHT && tempR <= MAX_LAYER_HEIGHT)) {
-        //TODO: 만약 값이 제대로 정확하게 왔다면.
-        console.log('LOGIC');
-        return;
+        let nowTable = document.getElementById('elevator-table');
+        if (nowTable.rows.length === +tempR && nowTable.rows[0].cells.length === +tempC + 1) {
+            alert('중복된 값입니다.');
+            return;
+        }
+        let remakeTable = document.createElement('tbody');
+        nowTable.innerHTML = `<caption>KAKAO - 화물 엘리베이터 부르기</caption>`;
+        for (let i = 0; i < tempR; ++i) {
+            let nowRow = remakeTable.insertRow(i);
+            for (let j = 0; j <= tempC; ++j) {
+                let nowCol = nowRow.insertCell(j);
+                if (j === 0) {
+                    let buttonLayer = document.createElement('input');
+                    let nowLayer = 'layer' + (tempR - i);
+                    buttonLayer.setAttribute('id', nowLayer.toString());
+                    buttonLayer.setAttribute('onclick', `goToDistLayer('${nowLayer}')`);
+                    buttonLayer.setAttribute('type', 'button');
+                    buttonLayer.setAttribute('value', (tempR - i).toString() + '층');
+                    nowCol.appendChild(buttonLayer);
+                } else if (i === tempR - 1) {
+                    let elevatorDiv = document.createElement('div');
+                    elevatorDiv.setAttribute('id', `Elevator${j}`);
+                    elevatorDiv.setAttribute('class', 'Elevator');
+                    elevatorDiv.innerHTML = j;
+                    nowCol.appendChild(elevatorDiv);
+                }
+                else {
+                    nowCol.innerHTML = (i.toString() + j);
+                }
+            }
+        }
+        nowTable.appendChild(remakeTable);
     } else {
         alert('엘리베이터는 2~4개\n층 수는 2~5로 해주세요!');
     }
-    return;
 }
