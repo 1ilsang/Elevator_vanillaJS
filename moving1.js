@@ -26,7 +26,7 @@ function moving(e, layerButton) {
         layerButton.disabled = 'disable';
         lock = false;
         clear = setInterval(function () {
-            if (clearTime >= 49 * distLayer) {
+            if (clearTime >= 49 * distLayer) {//TODO: flag 추가 필요
                 clearTimeout(clear);
                 e.style.backgroundColor = 'orange';
                 setTimeout(function () {
@@ -39,7 +39,8 @@ function moving(e, layerButton) {
                 }, 3000);
             }
             else {
-                //e 의 현재 위치에서 빼주는 로직 추가 필요.
+                //TODO: e 의 현재 위치에서 빼주는 로직 추가 필요.
+                //TODO: 층을 넘을 경우 멈춰주던가 해주어야 함. flag 사용
                 e.style.marginTop = -clearTime + 'px';
                 clearTime += 5;
             }
@@ -52,6 +53,7 @@ function setTableSize() {
     tempC = document.getElementById('inputElevatorNum').value;
     tempR = document.getElementById('inputLayerHeight').value;
     //TODO: validation 해줘야함.
+    //TODO: 저장되었던 변수값?들 모두 초기화 해주어야 함.
     if ((tempC >= MIN_ELEVATOR_NUM && tempC <= MAX_ELEVATOR_NUM)
         && (tempR >= MIN_LAYER_HEIGHT && tempR <= MAX_LAYER_HEIGHT)) {
         let nowTable = document.getElementById('elevator-table');
