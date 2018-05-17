@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="index.css">
+    <title>카카오 사전과제</title>
+    <script src="moving1.js"></script>
+    <script src="underscore-min.js"></script>
+</head>
+<body>
+
+<table id="elevator-table">
+    <caption>KAKAO - 화물 엘리베이터 부르기</caption>
+    <tbody>
+    <tr>
+        <th>
+            <button id='layer5' onclick="goToDistLayer('layer5')">5층</button>
+        </th>
+        <td>
+        </td>
+        <td>
+2
+        </td>
+        <td>
+2
+        </td>
+        <td>
+2
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <button id='layer4' onclick="goToDistLayer('layer4')">4층</button>
+        </th>
+        <td>
+3
+        </td>
+        <td>
+4
+        </td>
+        <td>
+5
+        </td>
+        <td>
+6
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <button id='layer3' onclick="goToDistLayer('layer3')">3층</button>
+        </th>
+        <td>
+7
+        </td>
+        <td>
+8
+        </td>
+        <td>
+1
+        </td>
+        <td>
+2
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <button id='layer2' onclick="goToDistLayer('layer2')">2층</button>
+        </th>
+        <td>
+22
+        </td>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+        <td>
+
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <button id='layer1' onclick="goToDistLayer('layer1')">1층</button>
+        </th>
+        <td>
+            <div id="firstElevator" class="Elevator">0</div>
+        </td>
+        <td>
+            <div id="secondElevator" class="Elevator">1</div>
+        </td>
+        <td>
+            <div id="thirdElevator" class="Elevator">2</div>
+        </td>
+        <td>
+            <div id="fourthElevator" class="Elevator">3</div>
+            <!--<div id="fifthElevator">hi</div>-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div class="inputBox">
+    <ul class="inputList">
+        <li>
+            엘리베이터의 개수 : <input id="inputElevatorNum" type="text" placeholder="엘리베이터의 개수를 적어주세요" size="25"/>
+        </li>
+        <li>
+            층의 수 : <input id="inputLayerHeight" type="text" placeholder="층의 높이를 적어주세요" size="25"/>
+        </li>
+        <li>
+            <input id="setTableSizeButton" type="button" value="변경" onclick="setTableSize()">
+        </li>
+    </ul>
+</div>
+</body>
+</html>
