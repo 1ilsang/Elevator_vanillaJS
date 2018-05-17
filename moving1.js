@@ -13,14 +13,17 @@ const ThroughputScheduler = {
         const nowL = layer.toString().replace(/[^0-9]/g, '');
         let selectedElevator = null;
         //같은 층이라면 null 반환.
+        console.log(nowL);
         if (check[nowL]) return null;
+        //엘리베이터의 상태를 순회. 절대값으로 가장 가까운 녀석을 찾는다.
+        //TODO 락이 걸려 있다면 pass 해야한다.
         for (let i = 0; i < elevatorList.length; i++) {
             let nowValue = nowL - +elevatorList[i].curLayer;
-            
+            console.log(i, nowValue);
             if (0 > nowValue) {
                 nowValue = -nowValue;
             }
-            if (minL > nowValue) {
+            if (minL >= nowValue) {
                 minL = nowValue;
                 selectedElevator = elevatorList[i].getId;
             }
@@ -54,8 +57,7 @@ function SchedulerFactory(inputScheduler, layer) {
     return scheduler;
 }
 
-//TODO: 내려가는 로직, 락, 테이블 크기에 따른 엘베 수 조정
-//XXX: 이게 아마
+//TODO: (내려가는 로직, 락) <- 이게 빡셀 예정, 속도 조절, API 명세
 function moving(e, layerButton) {
     if (e === null) {
         return;
@@ -76,7 +78,7 @@ function moving(e, layerButton) {
         console.log(distLayer, elevatorList[movingE - 1].curLayer);
         lock = false;
         clear = setInterval(function () {
-            if (clearTime >= 49 * (distLayer - elevatorList[movingE - 1].curLayer)) {
+            if (clearTime >= 65 * (distLayer - elevatorList[movingE - 1].curLayer)) {
                 clearTimeout(clear);
                 e.style.backgroundColor = 'orange';
                 setTimeout(function () {
@@ -97,7 +99,7 @@ function moving(e, layerButton) {
                 // console.log(e.style.marginTop, clearTime, elevatorList[movingE - 1].curHeight);
                 clearTime += 5;
             }
-        }, 100);
+        }, 50);
     }
 }
 
@@ -105,8 +107,6 @@ function setTableSize() {
     let tempC, tempR;
     tempC = document.getElementById('inputElevatorNum').value;
     tempR = document.getElementById('inputLayerHeight').value;
-    //TODO: validation 해줘야함.
-    //TODO: 저장되었던 변수값?들 모두 초기화 해주어야 함.
     if ((tempC >= MIN_ELEVATOR_NUM && tempC <= MAX_ELEVATOR_NUM)
         && (tempR >= MIN_LAYER_HEIGHT && tempR <= MAX_LAYER_HEIGHT)) {
         let nowTable = document.getElementById('elevator-table');
@@ -116,7 +116,7 @@ function setTableSize() {
         }
         let remakeTable = document.createElement('tbody');
         elevatorList = [];
-        check = [4, 4, 0, 0, 0, 0];
+        check = [4, tempC, 0, 0, 0, 0];
         nowTable.innerHTML = `<caption>KAKAO - 화물 엘리베이터 부르기</caption>`;
         for (let i = 0; i < tempR; ++i) {
             let nowRow = remakeTable.insertRow(i);
@@ -145,14 +145,10 @@ function setTableSize() {
         currentLayerHeight = tempR;
         currentElevatorNum = tempC;
         nowTable.appendChild(remakeTable);
-        
         for (let i = 1; i <= tempC; ++i) {
             let nextElevator = document.getElementById(`Elevator${i}`);
-            console.log(nextElevator);
             elevatorList.push(createElevator(nextElevator));
         }
-        console.log(elevatorList);
-        
     } else {
         alert('엘리베이터는 2~4개\n층 수는 2~5로 해주세요!');
     }
