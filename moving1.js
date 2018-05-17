@@ -1,17 +1,19 @@
 let clearTime = 0;
 var clear = 0;
 
-function goToDistLayer(layer) {
-    let e = document.getElementById('Elevator1');
-    let layerButton = document.getElementById(layer);
-    moving(e, layerButton);
-}
-
 let lock = true;
 const MAX_ELEVATOR_NUM = 4;
 const MIN_ELEVATOR_NUM = 2;
 const MAX_LAYER_HEIGHT = 5;
 const MIN_LAYER_HEIGHT = 2;
+let currentElevatorNum = 4;
+let currentLayerHeight = 5;
+
+function goToDistLayer(layer) {
+    let e = document.getElementById('Elevator1');
+    let layerButton = document.getElementById(layer);
+    moving(e, layerButton);
+}
 
 function moving(e, layerButton) {
     //같은 층이라면 조건 추가.
@@ -87,6 +89,8 @@ function setTableSize() {
                 }
             }
         }
+        currentLayerHeight = tempR;
+        currentElevatorNum = tempC;
         nowTable.appendChild(remakeTable);
     } else {
         alert('엘리베이터는 2~4개\n층 수는 2~5로 해주세요!');
