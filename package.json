@@ -4,7 +4,7 @@
   "description": "다중 엘리베이터 구현 === 추가중... 이후 블로그에 더 상세하게 포스팅 할 예정.",
   "main": "n",
   "scripts": {
-    "start": "tsc --target ES2016 Elevator.ts && open index.html"
+    "start": "tsc --target ES2016 src/Elevator.ts && open index.html"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,5 @@
   "dependencies": {
     "typescript": "^2.8.3"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

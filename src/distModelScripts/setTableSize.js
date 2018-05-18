@@ -9,6 +9,15 @@ function setTableSize() {
             alert('중복된 값입니다.');
             return;
         }
+        //XXX: 이 부분도 변수가 너무 거추장 수럽다. 변경하자.
+        time1 = 0;
+        time2 = 0;
+        time3 = 0;
+        time4 = 0;
+        clearTime1 = 0;
+        clearTime2 = 0;
+        clearTime3 = 0;
+        clearTime4 = 0;
         let remakeTable = document.createElement('tbody');
         elevatorList = [];
         check = [4, tempC, 0, 0, 0, 0];

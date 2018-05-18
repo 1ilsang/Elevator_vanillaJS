@@ -4,7 +4,7 @@
     "target": "es5",
     "noImplicitAny": false,
     "sourceMap": true,
-    "outDir": "scripts/"
+    "outDir": "src/distModelScripts/"
   },
   "exclude": [
     "node_modules"
