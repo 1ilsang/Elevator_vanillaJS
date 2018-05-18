@@ -1,33 +1,36 @@
-"use strict";
-exports.__esModule = true;
-var Elevator = /** @class */ (function () {
-    function Elevator(id) {
+class Elevator {
+    constructor(id) {
         this.id = id;
         this.currentLayer = 1;
+        this.currentHeight = 0;
+        this.lock = false;
     }
-    Object.defineProperty(Elevator.prototype, "curLayer", {
-        get: function () {
-            return this.currentLayer;
-        },
-        set: function (dist) {
-            this.currentLayer = dist;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(Elevator.prototype, "getId", {
-        get: function () {
-            return this.id;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Elevator.prototype.test = function () {
-        console.log('hi');
-    };
-    return Elevator;
-}());
-function createElevator(id) {
+    get curLayer() {
+        return this.currentLayer;
+    }
+    set curLayer(dist) {
+        this.currentLayer = dist;
+    }
+    get curHeight() {
+        return this.currentHeight;
+    }
+    set curHeight(height) {
+        this.currentHeight = height;
+    }
+    get getId() {
+        return this.id;
+    }
+    get isLock() {
+        return this.lock;
+    }
+    set isLock(lock) {
+        this.lock = lock;
+    }
+}
+export function createElevator(id) {
     return new Elevator(id);
 }
-exports.createElevator = createElevator;
+// export function moving(layerButton: HTMLElement) {
+//     public distLayer:number = layerButton.id.toString().replace(/[^0-9]/g, '');
+//     distLayer=3;
+// }

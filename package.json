@@ -4,7 +4,7 @@
   "description": "다중 엘리베이터 구현 === 추가중... 이후 블로그에 더 상세하게 포스팅 할 예정.",
   "main": "n",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsc --target ES2016 Elevator.ts && open index.html"
   },
   "repository": {
     "type": "git",
@@ -17,10 +17,8 @@
   },
   "homepage": "https://github.com/1ilsang/Elevator_vanillaJS#readme",
   "dependencies": {
-    "typescript": "^2.8.3",
-    "webpack": "^4.8.3"
+    "typescript": "^2.8.3"
   },
   "devDependencies": {
-    "webpack-cli": "^2.1.3"
   }
 }
