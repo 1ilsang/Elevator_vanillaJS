@@ -1,6 +1,6 @@
-층을 입력받아 층의 버튼이 활성화되었는지 여부를 반환하는 메서드.
+층을 입력받아 층의 버튼이 활성화되었는지 여부를 반환하는 메서드 flow
 ===
-1. Elevator.ts
+### 1. Elevator.ts
 ```javascript
 class Elevator {
     private lock: boolean = false;
@@ -17,7 +17,7 @@ class Elevator {
 (이후 시간이 된다면 이 부분을 싱글톤으로 막으려고 한다. static or LazySingleton) 
 get / set 을 통해 lock 을 가져오면 된다.
 
-2. 실제 사용
+### 2. 실제 사용
 ```javascript
     set : elevatorList[selected].isLock = true;
     get : if(elevatorList[selected].isLock);
