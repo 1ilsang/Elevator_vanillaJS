@@ -12,7 +12,7 @@ function setTableSize() {
         let remakeTable = document.createElement('tbody');
         elevatorList = [];
         check = [4, tempC, 0, 0, 0, 0];
-        nowTable.innerHTML = `<caption>KAKAO - 화물 엘리베이터 부르기</caption>`;
+        nowTable.innerHTML = `<caption>화물 엘리베이터 부르기</caption>`;
         for (let i = 0; i < tempR; ++i) {
             let nowRow = remakeTable.insertRow(i);
             for (let j = 0; j <= tempC; ++j) {
